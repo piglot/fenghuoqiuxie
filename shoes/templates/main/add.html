@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}烽火球鞋库存管理系统 - 用户权限{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h3>球鞋入库</h3>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

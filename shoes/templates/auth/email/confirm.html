@@ -1,0 +1,8 @@
+<p>您好 {{ user.username }},</p>
+<p>欢迎访问 <b>烽火球鞋库存管理系统</b>!</p>
+<p>请确认您的帐户 <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">点击这里</a>.</p>
+<p>或者，您可以将以下链接拷贝至浏览器并打开:</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+<p>祝 生活愉快,</p>
+<p>杨晓菁</p>
+<p><small>注意: 该邮件是系统自动发送的，请勿回复。</small></p>

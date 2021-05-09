@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}烽火球鞋库存管理系统 - Confirm your account{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        您好，{{ current_user.username }}!
+    </h1>
+    <h3>您还尚未确认账户，</h3>
+    <p>
+        登录前请确认您的帐户！
+        检查你邮箱的收件箱，有一封待确认的邮件，其中有确认链接，点击即可确认.
+    </p>
+    <p>
+        没收到确认邮件?
+        <a href="{{ url_for('auth.resend_confirmation') }}">点此重新发送</a>
+    </p>
+</div>
+{% endblock %}

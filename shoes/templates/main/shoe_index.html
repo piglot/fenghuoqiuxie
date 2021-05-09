@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}烽火球鞋库存管理系统 - 库存管理{% endblock %}
+
+{% block page_content %}
+{{ super() }}
+<div class="page-header">
+    <h4>你好, {% if current_user.username %}{{ current_user.username }}{% else %}Stranger{% endif %} !</h4>
+    <h3>库存管理</h3>
+</div>
+
+<div class="col-md-4" >
+    {% if current_user.role == 0  or current_user.role == 1 %}
+    <p><a href="{{ url_for('main.add_shoes') }}">入库</a></p>
+    <br>
+    <p><a href="{{ url_for('main.del_shoes') }}">出库</a></p>
+    {% endif %}
+    <br>
+    <p><a href="{{ url_for('main.query_shoes') }}">查询</a></p>
+    <br>
+    <p><a href="{{ url_for('main.update_notes') }}">备注</a></p>
+</div>
+
+<table id="table" border="2" width="500" cellspacing="0" cellpadding="6">
+    <tr>
+        <th>鞋号</th>
+        <th>鞋名</th>
+        <th>款式</th>
+        <th>尺码</th>
+        <th>数量</th>
+        <th>备注</th>
+    </tr>
+    {% if shoe %}
+    <tr>
+        <td>{{ shoe.number }}</td>
+        <td>{{ shoe.name }}</td>
+        <td>{{ shoe.type }}</td>
+        <td>{{ shoe.size }}</td>
+        <td>{{ shoe.count }}</td>
+        <td>{{ shoe.note or ' ' }}</td>
+    </tr>
+    {% endif %}
+
+    {% for shoe in shoes %}
+        {% if shoe.type == "1" %}
+            {%　set shoe_type = "男款" %}
+        {% elif shoe.type == "2" %}
+            {%　set shoe_type = "女款" %}
+        {% else %}
+            {%　set shoe_type = "男女同款" %}
+        {% endif %}
+    <tr>
+        <td>{{ shoe.number }}</td>
+        <td>{{ shoe.name }}</td>
+        <td>{{ shoe_type }}</td>
+        <td>{{ shoe.size }}</td>
+        <td>{{ shoe.count }}</td>
+        <td>{{ shoe.note or ' '}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
