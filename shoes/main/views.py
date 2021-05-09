@@ -55,6 +55,7 @@ def add_shoes():
                                     size=form.size.data).first()
         if shoe:
             shoe.count += form.count.data
+            shoe.note = form.note.data
         else:
             count = form.count.data
             shoe = Shoe(name=form.name.data,
