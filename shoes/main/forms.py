@@ -25,6 +25,7 @@ class ShoeDeleteForm(FlaskForm):
     type = SelectField('款式', choices=Shoe_Type, coerce=int, default=3)
     size = SelectField('尺码', choices=Shoe_Size, coerce=int)
     count = IntegerField('数量', validators=[DataRequired()])
+    note = TextAreaField('备注', validators=[Optional()])
     submit = SubmitField('删除')
 
 class ShoeQueryForm(FlaskForm):
