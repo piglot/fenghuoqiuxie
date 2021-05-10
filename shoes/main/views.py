@@ -55,7 +55,8 @@ def add_shoes():
                                     size=form.size.data).first()
         if shoe:
             shoe.count += form.count.data
-            shoe.note = form.note.data
+            if form.note.data:
+                shoe.note = form.note.data
         else:
             count = form.count.data
             shoe = Shoe(name=form.name.data,
@@ -82,7 +83,8 @@ def del_shoes():
         if shoe:
             if shoe.count > form.count.data:
                 shoe.count -= form.count.data
-                shoe.note = form.note.data
+                if form.note.data:
+                    shoe.note = form.note.data
                 action = True
             elif shoe.count == form.count.data:
                 Shoe.query.filter_by(number=form.number.data,
