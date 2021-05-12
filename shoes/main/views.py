@@ -8,8 +8,6 @@ from ..decorators import admin_required, super_admin_required
 from .forms import ShoeForm, ShoeAddForm, ShoeQueryForm, ShoeDeleteForm, ShoeNoteForm
 from .. import db
 
-from . import logic
-
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
